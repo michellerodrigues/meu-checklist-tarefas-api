@@ -63,7 +63,7 @@ Ou com syntax highlighting (se preferir):
 
 ```text
 meu-checklist-tarefas-mvp/
-./api
+./src
 ├── database/
 │   ├── banco_tarefas.sqlite3
 │   ├── database.py
