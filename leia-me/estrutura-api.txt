@@ -1,0 +1,33 @@
+./api
+├── database/
+│   ├── banco_tarefas.sqlite3
+│   ├── database.py
+├── models/
+│   ├── base.py
+│   ├── categoria.py
+│   ├── questionario.py
+│   ├── usuario.py
+│   ├── __init__.py
+├── routers/
+│   ├── autenticacao.py
+│   ├── categorias.py
+│   ├── questionario.py
+│   ├── __init__.py
+├── schemas/
+│   ├── base.py
+│   ├── categoria.py
+│   ├── converters.py
+│   ├── questionario.py
+│   ├── usuario.py
+│   ├── __init__.py
+├── security/
+│   ├── security.py
+│   ├── __init__.py
+├── services/
+│   ├── autenticacao.py
+│   ├── categorias.py
+│   ├── questionario.py
+├── config.env
+├── dependencias.txt
+├── main.py
+├── __init__.py
