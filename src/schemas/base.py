@@ -1,15 +1,24 @@
-from pydantic import BaseModel, field_validator
-from typing import List, Literal
+from __future__ import annotations
 
-# Neste esquema, temos a validação das tags que devem começar com '#'
-# As tags são armazenadas como ["#tag1","#tag2"] no banco de dados
+from typing import Literal
+
+from pydantic import BaseModel
+from pydantic import field_validator
+
+
 class OpcaoBase(BaseModel):
-    id:int
+    """
+    Neste esquema, temos a validação das tags que devem começar com '#'
+    As tags são armazenadas como ["#tag1","#tag2"] no banco de dados
+
+    """
+
+    id: int
     texto: str
-    tags: List[str]
-    
+    tags: list[str]
+
     @field_validator('tags')
-    def validar_tags(cls, v):
+    def validar_tags(self, v):
         if not all(tag.startswith('#') for tag in v):
             raise ValueError("Tags devem começar com '#'")
         return v

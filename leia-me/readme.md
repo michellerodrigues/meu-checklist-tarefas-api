@@ -20,7 +20,7 @@
         python -m venv venv
         .\venv\Scripts\activate
         ```
-        
+
 3. **Instale as dependências**:
     ```bash
     pip install -r dependencias.txt
@@ -36,9 +36,9 @@
 
 5. **Execute a aplicação**:
 A escolha do uvicorn + FastApi ajudou na documentação automática, para colocar o swagger :)
-   
+
     ```bash
-    cd api 
+    cd api
     uvicorn main:app --reload --port 8002
     ```
 
@@ -47,7 +47,7 @@ A escolha do uvicorn + FastApi ajudou na documentação automática, para coloca
     http://localhost:8002/meu-checklist-tarefas-doc
     ```
 
-    
+
 ## Estrutura do Projeto
 
 
@@ -142,8 +142,8 @@ meu-checklist-tarefas-mvp/
     > cd meu-checklist-tarefas-mvp/front
     > python -m http.server 8005
   ```
-    
-    
+
+
 2 - Estrutura de Pastas
 ```text
 ./front

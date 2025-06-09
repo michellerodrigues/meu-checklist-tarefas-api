@@ -1,0 +1,105 @@
+repos:
+  # ==================== VALIDAÇÃO DE PROJETO ====================
+  - repo: https://github.com/abravalheri/validate-pyproject
+    rev: v0.15
+    hooks:
+      - id: validate-pyproject
+
+  # ==================== FORMATAÇÃO AUTOMÁTICA ====================
+  - repo: https://github.com/psf/black
+    rev: 25.1.0  # Versão estável mais recente
+    hooks:
+      - id: black
+        language_version: python3.13
+        args: [--line-length=88]
+
+  - repo: https://github.com/PyCQA/isort
+    rev: 6.0.1
+    hooks:
+      - id: isort
+        name: isort (python)
+        args: ["--profile", "black", "--line-length=88"]
+
+  - repo: https://github.com/asottile/add-trailing-comma
+    rev: v3.2.0
+    hooks:
+      - id: add-trailing-comma
+
+  - repo: https://github.com/asottile/reorder-python-imports
+    rev: v3.15.0
+    hooks:
+      - id: reorder-python-imports
+        args: [--py39-plus, --add-import, 'from __future__ import annotations']
+
+  # ==================== LINTERS BÁSICOS ====================
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-added-large-files
+      - id: debug-statements
+      - id: double-quote-string-fixer
+      - id: name-tests-test
+      - id: requirements-txt-fixer
+      - id: check-merge-conflict  # Adição útil
+
+  # ==================== LINTERS AVANÇADOS ====================
+  - repo: https://github.com/PyCQA/flake8
+    rev: 7.2.0
+    hooks:
+      - id: flake8
+        additional_dependencies:
+          - flake8-bugbear==24.4.21
+          - flake8-comprehensions==3.14.0
+          - flake8-pyi==25.5.0
+        args: ["--config=src/pyproject.toml"]
+
+  - repo: https://github.com/PyCQA/pylint
+    rev: v3.3.7
+    hooks:
+      - id: pylint
+        args: ["--rcfile=src/pyproject.toml", "--recursive=y", "--ignore-patterns=__pycache__", "--persistent=n", "src/"]
+        additional_dependencies:
+          - "uvicorn==0.23.2"
+          - "fastapi==0.115.12"
+          - "passlib==1.7.4"
+          - "pydantic==2.11.3"
+          - "SQLAlchemy==2.0.40"
+          - "SQLAlchemy_Utils==0.41.2"
+          - "tomli>=2.0.1"
+
+  # ==================== VERIFICAÇÃO DE TIPOS ====================
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.16.0
+    hooks:
+      - id: mypy
+        args: [--strict, --ignore-missing-imports, --show-error-codes]
+        additional_dependencies:
+          - types-requests
+          - types-pyyaml
+          - types-python-dateutil
+
+  # ==================== SEGURANÇA ====================
+  - repo: https://github.com/PyCQA/bandit
+    rev: 1.8.3
+    hooks:
+      - id: bandit
+        args: ["-c", "src/pyproject.toml", "-ll"]
+        exclude: "tests/|examples/"
+
+  # ==================== DOCUMENTAÇÃO ====================
+  - repo: https://github.com/PyCQA/pydocstyle
+    rev: 6.3.0
+    hooks:
+      - id: pydocstyle
+        args: ["--config=src/pyproject.toml"]
+        exclude: "tests/|migrations/"
+
+  # ==================== ATUALIZAÇÃO DE CÓDIGO ====================
+  - repo: https://github.com/asottile/pyupgrade
+    rev: v3.20.0
+    hooks:
+      - id: pyupgrade
+        args: [--py39-plus]

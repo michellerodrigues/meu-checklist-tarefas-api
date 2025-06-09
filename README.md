@@ -27,7 +27,7 @@ Veja a apresentação do site em: https://www.youtube.com/watch?v=J5EoOjXckBQ
         python -m venv venv
         .\venv\Scripts\activate
         ```
-        
+
 3. **Instale as dependências da api**:
     ```bash
     cd api
@@ -44,9 +44,9 @@ Veja a apresentação do site em: https://www.youtube.com/watch?v=J5EoOjXckBQ
 
 5. **Execute a aplicação**:
 A escolha do uvicorn + FastApi ajudou na documentação automática, para colocar o swagger :)
-   
+
     ```bash
-    cd api 
+    cd api
     uvicorn main:app --reload --port 8002
     ```
 
@@ -55,7 +55,7 @@ A escolha do uvicorn + FastApi ajudou na documentação automática, para coloca
     http://localhost:8002/meu-checklist-tarefas-doc
     ```
 
-    
+
 ## Estrutura do Projeto
 
 
@@ -150,8 +150,8 @@ meu-checklist-tarefas-mvp/
     > cd meu-checklist-tarefas-mvp/front
     > python -m http.server 8005
   ```
-    
-    
+
+
 2 - Estrutura de Pastas
 ```text
 ./front

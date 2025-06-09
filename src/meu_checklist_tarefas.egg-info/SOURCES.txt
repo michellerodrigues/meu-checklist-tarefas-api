@@ -1,0 +1,5 @@
+pyproject.toml
+meu_checklist_tarefas.egg-info/PKG-INFO
+meu_checklist_tarefas.egg-info/SOURCES.txt
+meu_checklist_tarefas.egg-info/dependency_links.txt
+meu_checklist_tarefas.egg-info/top_level.txt
