@@ -3,7 +3,7 @@ from __future__ import annotations
 from sqlalchemy import Column
 from sqlalchemy import Integer
 
-from ..database.database import Base
+from database.database import Base
 
 
 class BaseModel(Base):

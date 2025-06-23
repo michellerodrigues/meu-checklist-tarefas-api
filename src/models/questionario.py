@@ -12,8 +12,8 @@ from sqlalchemy import String
 from sqlalchemy import Text
 from sqlalchemy.orm import relationship
 
-from ..models.base import BaseModel
-from ..models.base import CompositeKeyBase
+from models.base import BaseModel
+from models.base import CompositeKeyBase
 
 
 class PerguntaModel(BaseModel):

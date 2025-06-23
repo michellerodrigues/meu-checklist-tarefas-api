@@ -18,7 +18,9 @@ class OpcaoBase(BaseModel):
     tags: list[str]
 
     @field_validator('tags')
-    def validar_tags(self, v):
+    @classmethod  # Adicione este decorador
+    def validar_tags(cls, v: list[str]) -> list[str]:  # Remova 'self', use 'cls'
+    #def validar_tags(self, v):
         if not all(tag.startswith('#') for tag in v):
             raise ValueError("Tags devem começar com '#'")
         return v

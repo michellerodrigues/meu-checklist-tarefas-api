@@ -22,7 +22,8 @@ class PerguntaSchema(PerguntaBase):  # noqa: C0115
     opcoes: list[OpcaoSchema]
 
     @field_validator('opcoes')
-    def validar_opcoes_radio(self, v, values):
+    @classmethod
+    def validar_opcoes_radio(cls, v: list[str], values):
         if values.data.get('tipo') == 'radio':
             selecionadas = sum(1 for opcao in v if opcao.selecionada)
             if selecionadas > 1:
@@ -69,7 +70,8 @@ class ResponderQuestionarioResponse(BaseModel):
     tags_usuario: list[str]
 
     @field_validator('tags_usuario')
-    def parse_tags(self, value):
+    @classmethod
+    def parse_tags(cls, value: list[str]):
         if isinstance(value, str):
             return json.loads(value)
         return value

@@ -5,13 +5,13 @@ from fastapi import Depends
 from fastapi import status
 from sqlalchemy.orm import Session
 
-from ..database.database import SessionLocal
-from ..schemas.usuario import CadastrarUsuarioRequest
-from ..schemas.usuario import CadastrarUsuarioResponse
-from ..schemas.usuario import UsuarioLoginRequest
-from ..schemas.usuario import UsuarioLoginResponse
-from ..services.autenticacao import criar_usuario
-from ..services.autenticacao import efetuar_login
+from database.database import SessionLocal
+from schemas.usuario import CadastrarUsuarioRequest
+from schemas.usuario import CadastrarUsuarioResponse
+from schemas.usuario import UsuarioLoginRequest
+from schemas.usuario import UsuarioLoginResponse
+from services.autenticacao import criar_usuario
+from services.autenticacao import efetuar_login
 
 router = APIRouter(prefix='/auth', tags=['Autenticação'])
 

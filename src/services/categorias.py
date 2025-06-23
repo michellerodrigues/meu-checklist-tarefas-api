@@ -4,13 +4,13 @@ from fastapi import HTTPException
 from sqlalchemy.orm import selectinload
 from sqlalchemy.orm import Session
 
-from ..models.categoria import CategoriaModel
-from ..models.categoria import TarefaModel
-from ..schemas.categoria import (
+from models.categoria import CategoriaModel
+from models.categoria import TarefaModel
+from schemas.categoria import (
     CarregaPainelUsuarioResponse,
 )
-from ..schemas.categoria import CategoriaCreate as CategoriaCreateSchema
-from ..schemas.converters import CategoriaConverter
+from schemas.categoria import CategoriaCreate as CategoriaCreateSchema
+from schemas.converters import CategoriaConverter
 
 
 def criar_categoria(categoria: CategoriaCreateSchema, db: Session) -> CategoriaModel:

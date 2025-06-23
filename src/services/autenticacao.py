@@ -6,15 +6,15 @@ from fastapi import HTTPException
 from fastapi import status
 from sqlalchemy.orm import Session
 
-from ..models.questionario import QuestionarioModel
-from ..models.usuario import UsuarioModel
-from ..schemas.usuario import CadastrarUsuarioRequest
-from ..schemas.usuario import UsuarioLoginRequest
-from ..schemas.usuario import UsuarioLoginResponse
-from ..security.security import criar_hash_senha
-from ..security.security import verificar_senha
-from ..services.questionario import get_tags_do_usuario
-from ..services.questionario import obter_questionario_usuario
+from models.questionario import QuestionarioModel
+from models.usuario import UsuarioModel
+from schemas.usuario import CadastrarUsuarioRequest
+from schemas.usuario import UsuarioLoginRequest
+from schemas.usuario import UsuarioLoginResponse
+from security.security import criar_hash_senha
+from security.security import verificar_senha
+from services.questionario import get_tags_do_usuario
+from services.questionario import obter_questionario_usuario
 
 
 def __usuario_valido(email: str, senha: str, db: Session):

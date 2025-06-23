@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import os
-
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
@@ -9,7 +8,7 @@ from sqlalchemy_utils import create_database
 from sqlalchemy_utils import database_exists
 
 # url de acesso ao banco (essa é uma url de acesso ao sqlite local
-DB_PATH = 'src/database'
+DB_PATH = 'database'
 
 
 # Verifica se o diretorio não existe

@@ -4,17 +4,16 @@ from fastapi import APIRouter
 from fastapi import Depends
 from sqlalchemy.orm import Session
 
-from src.models.categoria import CategoriaModel
-
-from ..database.database import SessionLocal
-from ..schemas.categoria import (
+from database.database import SessionLocal
+from schemas.categoria import (
     CarregaPainelUsuarioResponse,
 )
-from ..schemas.categoria import Categoria as CategoriaSchema
-from ..schemas.categoria import CategoriaCreate as CategoriaCreateSchema
-from ..services.categorias import criar_categoria
-from ..services.categorias import ler_categoria
-from ..services.categorias import listar_categorias
+from schemas.categoria import Categoria as CategoriaSchema
+from schemas.categoria import CategoriaCreate as CategoriaCreateSchema
+from services.categorias import criar_categoria
+from services.categorias import ler_categoria
+from services.categorias import listar_categorias
+from models.categoria import CategoriaModel
 
 router = APIRouter(prefix='/categorias', tags=['Categorias'])
 

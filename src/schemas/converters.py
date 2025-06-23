@@ -2,9 +2,9 @@ from __future__ import annotations
 
 import json
 
-from ..models.categoria import CategoriaModel
-from ..models.questionario import OpcaoModel
-from ..models.questionario import PerguntaModel
+from models.categoria import CategoriaModel
+from models.questionario import OpcaoModel
+from models.questionario import PerguntaModel
 from .categoria import CarregaPainelUsuarioResponse
 from .categoria import TarefaUsuario
 

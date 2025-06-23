@@ -46,7 +46,7 @@ Veja a apresentação do site em: https://www.youtube.com/watch?v=J5EoOjXckBQ
 A escolha do uvicorn + FastApi ajudou na documentação automática, para colocar o swagger :)
 
     ```bash
-    cd api
+    cd src
     uvicorn main:app --reload --port 8002
     ```
 
@@ -58,8 +58,6 @@ A escolha do uvicorn + FastApi ajudou na documentação automática, para coloca
 
 ## Estrutura do Projeto
 
-
-Ou com syntax highlighting (se preferir):
 
 ```text
 meu-checklist-tarefas-mvp/

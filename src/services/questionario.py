@@ -11,14 +11,14 @@ from sqlalchemy.future import select
 from sqlalchemy.orm import selectinload
 from sqlalchemy.orm import Session
 
-from ..models.questionario import OpcaoModel
-from ..models.questionario import PerguntaModel
-from ..models.questionario import QuestionarioModel
-from ..models.questionario import RespostaModel
-from ..models.usuario import UsuarioModel
-from ..schemas.converters import QuestionarioConverter
-from ..schemas.questionario import ResponderQuestionarioRequest
-from ..schemas.questionario import ResponderQuestionarioResponse
+from models.questionario import OpcaoModel
+from models.questionario import PerguntaModel
+from models.questionario import QuestionarioModel
+from models.questionario import RespostaModel
+from models.usuario import UsuarioModel
+from schemas.converters import QuestionarioConverter
+from schemas.questionario import ResponderQuestionarioRequest
+from schemas.questionario import ResponderQuestionarioResponse
 
 
 async def criar_questionario(questionario: ResponderQuestionarioRequest, db: Session):

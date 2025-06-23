@@ -6,7 +6,7 @@ from sqlalchemy import Integer
 from sqlalchemy import String
 from sqlalchemy.orm import relationship
 
-from ..models.base import BaseModel
+from models.base import BaseModel
 
 
 class UsuarioModel(BaseModel):

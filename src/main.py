@@ -3,9 +3,9 @@ from __future__ import annotations
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from .routers.autenticacao import router as autenticacao_router
-from .routers.categorias import router as categorias_router
-from .routers.questionario import router as questionario_router
+from routers.autenticacao import router as autenticacao_router
+from routers.categorias import router as categorias_router
+from routers.questionario import router as questionario_router
 
 app = FastAPI(
     docs_url='/meu-checklist-tarefas-doc',

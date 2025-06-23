@@ -5,12 +5,12 @@ from fastapi import Depends
 from fastapi import HTTPException
 from sqlalchemy.orm import Session
 
-from ..database.database import SessionLocal
-from ..schemas.questionario import QuestionarioResponse
-from ..schemas.questionario import ResponderQuestionarioRequest
-from ..schemas.questionario import ResponderQuestionarioResponse
-from ..services.questionario import criar_questionario
-from ..services.questionario import obter_questionario_usuario
+from database.database import SessionLocal
+from schemas.questionario import QuestionarioResponse
+from schemas.questionario import ResponderQuestionarioRequest
+from schemas.questionario import ResponderQuestionarioResponse
+from services.questionario import criar_questionario
+from services.questionario import obter_questionario_usuario
 
 router = APIRouter(prefix='/questionarios', tags=['Questionários'])
 
