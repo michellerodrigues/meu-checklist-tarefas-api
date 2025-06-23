@@ -9,7 +9,7 @@ from sqlalchemy_utils import create_database
 from sqlalchemy_utils import database_exists
 
 # url de acesso ao banco (essa é uma url de acesso ao sqlite local
-DB_PATH = 'database'
+DB_PATH = 'src/database'
 
 
 # Verifica se o diretorio não existe
