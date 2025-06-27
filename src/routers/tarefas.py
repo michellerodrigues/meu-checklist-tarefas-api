@@ -11,7 +11,7 @@ from schemas.categoria import (
 )
 
 from services.categorias import buscar_categoria
-from routers.machine_learning import prever_categoria
+from src.machine_learning import prever_categoria
 from services.tarefas import criar_tarefa
 
 router = APIRouter(prefix='/tarefas', tags=['Tarefas'])
@@ -42,5 +42,5 @@ def criar_nova_tarefa(
 
     nova_tarefa.categoria_id = categoria.id;
     nova_tarefa.recorrencia_id=1;
-    
+
     return criar_tarefa(nova_tarefa, db)

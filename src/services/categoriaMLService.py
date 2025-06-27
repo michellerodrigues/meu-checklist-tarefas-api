@@ -100,7 +100,21 @@ class CategoriaMLService :
         self.modelo.fit(self.conjuntoTreinamento.X_train, self.conjuntoTreinamento.y_train)
 
     # Função para prever categoria de novas tarefas
-    def prever_categoria(self, tarefa):
+    """def prever_categoria(self, tarefa):
+        encoded = self.modelo.predict([tarefa])[0]
+        return self.conjuntoTreinamento.le.inverse_transform([encoded])[0]"""
+    
+    def prever_categoria(self, tarefa, threshold=0.05):
+        # Obtém as probabilidades para todas as classes
+        probas = self.modelo.predict_proba([tarefa])[0]
+        max_proba = max(probas)
+        
+        print(f"probabilidade max {max_proba}")
+        # Se a probabilidade máxima for menor que o threshold, retorna categoria default
+        if max_proba < threshold:
+            return "Outros"  # Ou qualquer nome que você queira para a categoria default
+        
+        # Caso contrário, retorna a categoria com maior probabilidade
         encoded = self.modelo.predict([tarefa])[0]
         return self.conjuntoTreinamento.le.inverse_transform([encoded])[0]
 

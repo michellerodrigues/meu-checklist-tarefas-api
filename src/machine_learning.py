@@ -1,10 +1,8 @@
 from __future__ import annotations
 
 import time
-
 import joblib
 import pandas as pd
-from fastapi import Depends
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics import classification_report
 from sklearn.model_selection import train_test_split
@@ -15,7 +13,6 @@ from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from database.database import engine
-from database.database import SessionLocal
 from models.categoria import CategoriaModel
 from models.categoria import TarefaModel
 
@@ -132,7 +129,21 @@ print(classification_report(
 
 
 # Função para prever categoria de novas tarefas
-def prever_categoria(tarefa):
+"""def prever_categoria(tarefa):
+    encoded = model.predict([tarefa])[0]
+    return le.inverse_transform([encoded])[0] """
+
+def prever_categoria(tarefa, threshold=0.50):
+    # Obtém as probabilidades para todas as classes
+    probas = model.predict_proba([tarefa])[0]
+    max_proba = max(probas)
+    
+    print(f"probabilidade max {max_proba}")
+    # Se a probabilidade máxima for menor que o threshold, retorna categoria default
+    if max_proba < threshold :
+        return "Outros"  # Ou qualquer nome que você queira para a categoria default
+    
+    # Caso contrário, retorna a categoria com maior probabilidade
     encoded = model.predict([tarefa])[0]
     return le.inverse_transform([encoded])[0]
 
@@ -145,6 +156,10 @@ print(
 
 nova_tarefa = 'instalar sistema de irrigação'
 print(f"A tarefa '{nova_tarefa}' pertence à categoria: {prever_categoria(nova_tarefa)}")
+
+nova_tarefa = 'organizar calendário de provas'
+print(f"A tarefa '{nova_tarefa}' pertence à categoria: {prever_categoria(nova_tarefa)}")
+
 
 tempo_final_prepropocessamento = time.time()
 print('Criando Pré-processamento....FIM:', tempo_final_prepropocessamento)
