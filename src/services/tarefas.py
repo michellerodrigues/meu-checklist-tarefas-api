@@ -8,17 +8,24 @@ from models.categoria import CategoriaModel
 from models.categoria import TarefaModel
 from schemas.categoria import (
     CarregaPainelUsuarioResponse,
+    TarefaCreate,
 )
-from schemas.categoria import CategoriaCreate as CategoriaCreateSchema
+
 from schemas.converters import CategoriaConverter
 
 
-def criar_categoria(categoria: CategoriaCreateSchema, db: Session) -> CategoriaModel:
-    db_categoria = CategoriaModel(nome=categoria.nome)
-    db.add(db_categoria)
+def criar_tarefa(nova_tarefa: TarefaCreate, db: Session) -> TarefaModel:
+    db_tarefa = TarefaModel(
+        descricao = nova_tarefa.descricao,
+        categoria_id = nova_tarefa.categoria_id,
+        recorrencia_id = nova_tarefa.recorrencia_id,
+        tags = "")
+
+
+    db.add(db_tarefa)
     db.commit()
-    db.refresh(db_categoria)
-    return db_categoria
+    db.refresh(db_tarefa)
+    return db_tarefa
 
 
 def listar_categorias(db: Session) -> list[CarregaPainelUsuarioResponse]:

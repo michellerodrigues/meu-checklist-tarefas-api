@@ -6,6 +6,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from routers.autenticacao import router as autenticacao_router
 from routers.categorias import router as categorias_router
 from routers.questionario import router as questionario_router
+from routers.tarefas import router as tarefas_router
 
 app = FastAPI(
     docs_url='/meu-checklist-tarefas-doc',
@@ -31,6 +32,7 @@ app.add_middleware(
 app.include_router(autenticacao_router, prefix='/api')
 app.include_router(questionario_router, prefix='/api')
 app.include_router(categorias_router, prefix='/api')
+app.include_router(tarefas_router, prefix='/api')
 
 
 @app.get('/')

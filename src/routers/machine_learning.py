@@ -6,7 +6,6 @@ import joblib
 import pandas as pd
 from fastapi import Depends
 from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import classification_report
 from sklearn.model_selection import train_test_split
 from sklearn.naive_bayes import MultinomialNB
@@ -15,10 +14,10 @@ from sklearn.preprocessing import LabelEncoder
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
-from src.database.database import engine
-from src.database.database import SessionLocal
-from src.models.categoria import CategoriaModel
-from src.models.categoria import TarefaModel
+from database.database import engine
+from database.database import SessionLocal
+from models.categoria import CategoriaModel
+from models.categoria import TarefaModel
 
 
 class DatasetTarefas:
