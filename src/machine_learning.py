@@ -1,8 +1,12 @@
 from __future__ import annotations
 
 import time
+
 import joblib
 import pandas as pd
+from database.database import engine
+from models.categoria import CategoriaModel
+from models.categoria import TarefaModel
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics import classification_report
 from sklearn.model_selection import train_test_split
@@ -11,10 +15,6 @@ from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import LabelEncoder
 from sqlalchemy import select
 from sqlalchemy.orm import Session
-
-from database.database import engine
-from models.categoria import CategoriaModel
-from models.categoria import TarefaModel
 
 
 class DatasetTarefas:
@@ -84,11 +84,14 @@ df['categoria_encoded'] = le.fit_transform(df['categoria'])
 
 # Dividir em treino e teste (80% treino, 20% teste)
 X_train, X_test, y_train, y_test = train_test_split(
-    df['tarefa'], df['categoria_encoded'], test_size=0.2, random_state=42,
+    df['tarefa'],
+    df['categoria_encoded'],
+    test_size=0.2,
+    random_state=42,
 )
 
 # Criar pipeline com vetorização TF-IDF e modelo Naive Bayes
-#model = make_pipeline(TfidfVectorizer(), MultinomialNB())
+# model = make_pipeline(TfidfVectorizer(), MultinomialNB())
 
 import nltk
 from nltk.corpus import stopwords
@@ -105,10 +108,7 @@ stop_words_pt = stopwords.words('portuguese')
         stop_words=stop_words_pt"""
 
 
-model = make_pipeline(
-    TfidfVectorizer(),
-    MultinomialNB()
-)
+model = make_pipeline(TfidfVectorizer(), MultinomialNB())
 
 
 # Treinar o modelo
@@ -120,12 +120,15 @@ all_classes = le.transform(le.classes_)  # Pega todas as classes do LabelEncoder
 # Avaliar no conjunto de teste
 y_pred = model.predict(X_test)
 print('\nRelatório de classificação:')
-print(classification_report(
-    y_test, 
-    y_pred,
-    zero_division=0,  # Define precisão/recall como 0 quando não há amostras
-    labels=all_classes, 
-    target_names=le.classes_))
+print(
+    classification_report(
+        y_test,
+        y_pred,
+        zero_division=0,  # Define precisão/recall como 0 quando não há amostras
+        labels=all_classes,
+        target_names=le.classes_,
+    ),
+)
 
 
 # Função para prever categoria de novas tarefas
@@ -133,16 +136,17 @@ print(classification_report(
     encoded = model.predict([tarefa])[0]
     return le.inverse_transform([encoded])[0] """
 
-def prever_categoria(tarefa, threshold=0.50):
+
+def prever_categoria(tarefa, threshold=0.45):
     # Obtém as probabilidades para todas as classes
     probas = model.predict_proba([tarefa])[0]
     max_proba = max(probas)
-    
+
     print(f"probabilidade max {max_proba}")
     # Se a probabilidade máxima for menor que o threshold, retorna categoria default
-    if max_proba < threshold :
-        return "Outros"  # Ou qualquer nome que você queira para a categoria default
-    
+    if max_proba < threshold:
+        return 'Outros'  # Ou qualquer nome que você queira para a categoria default
+
     # Caso contrário, retorna a categoria com maior probabilidade
     encoded = model.predict([tarefa])[0]
     return le.inverse_transform([encoded])[0]
@@ -154,12 +158,17 @@ print(
     f"\nA tarefa '{nova_tarefa}' pertence à categoria: {prever_categoria(nova_tarefa)}",
 )
 
-nova_tarefa = 'instalar sistema de irrigação'
+nova_tarefa = 'instalar sistema de irrigação das plantas'
 print(f"A tarefa '{nova_tarefa}' pertence à categoria: {prever_categoria(nova_tarefa)}")
 
 nova_tarefa = 'organizar calendário de provas'
 print(f"A tarefa '{nova_tarefa}' pertence à categoria: {prever_categoria(nova_tarefa)}")
 
+nova_tarefa = 'Comprar protetor de colchão para idosos'
+print(f"A tarefa '{nova_tarefa}' pertence à categoria: {prever_categoria(nova_tarefa)}")
+
+nova_tarefa = 'recarregar o bilhete do metrô'
+print(f"A tarefa '{nova_tarefa}' pertence à categoria: {prever_categoria(nova_tarefa)}")
 
 tempo_final_prepropocessamento = time.time()
 print('Criando Pré-processamento....FIM:', tempo_final_prepropocessamento)
@@ -212,3 +221,4 @@ to_persist = {
 joblib.dump(to_persist, 'modelo_tarefas.joblib')
 
 print("DataFrame e modelo salvos com sucesso em 'modelo_tarefas.joblib'")
+

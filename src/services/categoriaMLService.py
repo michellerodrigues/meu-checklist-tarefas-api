@@ -1,24 +1,28 @@
-import joblib
-from src.models.categoria import CategoriaModel
-from src.models.categoria import TarefaModel
-from src.schemas import ConjuntoTreinamento
-from src.schemas.datasetTarefas import DatasetTarefas
-from src.database.database import engine
-import gc
 from __future__ import annotations
+
+import gc
+
+import joblib
+import pandas as pd
 from fastapi import HTTPException
 from fastapi import status
-from sqlalchemy.orm import Session
-import pandas as pd
-from sklearn.pipeline import Pipeline, make_pipeline
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics import classification_report
 from sklearn.model_selection import train_test_split
 from sklearn.naive_bayes import MultinomialNB
+from sklearn.pipeline import make_pipeline
+from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import LabelEncoder
+from sqlalchemy.orm import Session
+
+from src.database.database import engine
+from src.models.categoria import CategoriaModel
+from src.models.categoria import TarefaModel
+from src.schemas import ConjuntoTreinamento
+from src.schemas.datasetTarefas import DatasetTarefas
 
 
-class CategoriaMLService :
+class CategoriaMLService:
 
     def __init__(self):
         self.dataframe = self._set_dataFrame()
@@ -28,9 +32,8 @@ class CategoriaMLService :
     def _liberar_memoria():
         gc.collect()
 
-
     def _set_dataFrame(self):
-        
+
         try:
 
             db = Session(engine)
@@ -55,71 +58,75 @@ class CategoriaMLService :
                 detail=f"Não foi possível gerar o dataset: {str(e)}",
             ) from e
 
-    
-    def get_relatorio_classificacao (self) -> dict:
+    def get_relatorio_classificacao(self) -> dict:
 
         y_pred = self.modelo.predict(self.conjuntoTreinamento.X_test)
 
-        all_classes = self.conjuntoTreinamento.le.transform(self.conjuntoTreinamento.le.classes_)  # Pega todas as classes do LabelEncoder
+        all_classes = self.conjuntoTreinamento.le.transform(
+            self.conjuntoTreinamento.le.classes_,
+        )  # Pega todas as classes do LabelEncoder
 
         return classification_report(
-            self.conjuntoTreinamento.y_test, 
+            self.conjuntoTreinamento.y_test,
             y_pred,
             zero_division=0,  # Define precisão/recall como 0 quando não há amostras
-            labels=all_classes, 
-            target_names=self.conjuntoTreinamento.le.classes_)
+            labels=all_classes,
+            target_names=self.conjuntoTreinamento.le.classes_,
+        )
 
-    
     def _set_conjunto_treinamento(self) -> ConjuntoTreinamento:
 
         le = LabelEncoder()
-        self.dataframe['categoria_encoded'] = le.fit_transform(self.dataframe['categoria'])
+        self.dataframe['categoria_encoded'] = le.fit_transform(
+            self.dataframe['categoria'],
+        )
 
         # Dividir em treino e teste (80% treino, 20% teste)
         X_train, X_test, y_train, y_test = train_test_split(
-            self.dataframe['tarefa'], self.dataframe['categoria_encoded'], test_size=0.2, random_state=42,
+            self.dataframe['tarefa'],
+            self.dataframe['categoria_encoded'],
+            test_size=0.2,
+            random_state=42,
         )
 
         conjuntoTreinamento = ConjuntoTreinamento(le, X_train, X_test, y_train, y_test)
         return conjuntoTreinamento
 
     def _set_modelo(self):
-            
+
         self.dataset = self._obter_dataset()
 
         self._liberar_memoria()
 
         self.conjuntoTreinamento = self._pre_processamento_target(self.dataset)
 
-        self.modelo = make_pipeline(
-            TfidfVectorizer(),
-            MultinomialNB()
-        )
+        self.modelo = make_pipeline(TfidfVectorizer(), MultinomialNB())
 
         # Treinar o modelo
-        self.modelo.fit(self.conjuntoTreinamento.X_train, self.conjuntoTreinamento.y_train)
+        self.modelo.fit(
+            self.conjuntoTreinamento.X_train, self.conjuntoTreinamento.y_train,
+        )
 
     # Função para prever categoria de novas tarefas
     """def prever_categoria(self, tarefa):
         encoded = self.modelo.predict([tarefa])[0]
         return self.conjuntoTreinamento.le.inverse_transform([encoded])[0]"""
-    
+
     def prever_categoria(self, tarefa, threshold=0.05):
         # Obtém as probabilidades para todas as classes
         probas = self.modelo.predict_proba([tarefa])[0]
         max_proba = max(probas)
-        
+
         print(f"probabilidade max {max_proba}")
         # Se a probabilidade máxima for menor que o threshold, retorna categoria default
         if max_proba < threshold:
-            return "Outros"  # Ou qualquer nome que você queira para a categoria default
-        
+            return 'Outros'  # Ou qualquer nome que você queira para a categoria default
+
         # Caso contrário, retorna a categoria com maior probabilidade
         encoded = self.modelo.predict([tarefa])[0]
         return self.conjuntoTreinamento.le.inverse_transform([encoded])[0]
 
-
-    def _criar_joblib(self) :
+    def _criar_joblib(self):
         to_persist = {
             'dataframe': self.dataFrame,
             'model': self.modelo,
@@ -131,4 +138,3 @@ class CategoriaMLService :
             },
         }
         joblib.dump(to_persist, 'joblib/modelo_tarefas.joblib')
-
