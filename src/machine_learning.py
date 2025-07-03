@@ -221,4 +221,3 @@ to_persist = {
 joblib.dump(to_persist, 'modelo_tarefas.joblib')
 
 print("DataFrame e modelo salvos com sucesso em 'modelo_tarefas.joblib'")
-

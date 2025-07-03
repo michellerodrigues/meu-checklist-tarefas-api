@@ -104,7 +104,8 @@ class CategoriaMLService:
 
         # Treinar o modelo
         self.modelo.fit(
-            self.conjuntoTreinamento.X_train, self.conjuntoTreinamento.y_train,
+            self.conjuntoTreinamento.X_train,
+            self.conjuntoTreinamento.y_train,
         )
 
     # Função para prever categoria de novas tarefas
