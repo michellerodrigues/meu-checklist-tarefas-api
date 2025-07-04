@@ -1,20 +1,20 @@
 from __future__ import annotations
 
 import os
+
+from dotenv import load_dotenv
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy_utils import create_database
 from sqlalchemy_utils import database_exists
-from dotenv import load_dotenv
-
 
 # Carrega variáveis do .env
 load_dotenv('src/config.env')
 
 
 # url de acesso ao banco (essa é uma url de acesso ao sqlite local
-SQLALCHEMY_DATABASE_URL = os.getenv("SQLALCHEMY_DATABASE_URL")
+SQLALCHEMY_DATABASE_URL = os.getenv('SQLALCHEMY_DATABASE_URL')
 
 # cria a engine de conexão com o banco
 engine = create_engine(

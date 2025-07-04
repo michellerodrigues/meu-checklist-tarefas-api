@@ -1,14 +1,15 @@
 from __future__ import annotations
 
-from database.database import SessionLocal
 from fastapi import APIRouter
 from fastapi import Depends
-from schemas.categoria import Tarefa, TarefaCreate
-from services.categorias import buscar_categoria
+from schemas.categoria import Tarefa
+from schemas.categoria import TarefaCreate
 from services.categoriaMLService import CategoriaMLService
+from services.categorias import buscar_categoria
 from services.tarefas import criar_tarefa
 from sqlalchemy.orm import Session
 
+from database.database import SessionLocal
 
 router = APIRouter(prefix='/tarefas', tags=['Tarefas'])
 

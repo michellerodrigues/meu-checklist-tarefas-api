@@ -1,9 +1,14 @@
 from __future__ import annotations
 
 from .base import BaseModel
-
-from .categoria import CategoriaModel, TarefaModel, RecorrenciaModel, Execucao
-from .questionario import PerguntaModel, QuestionarioModel, RespostaModel, OpcaoModel
+from .categoria import CategoriaModel
+from .categoria import Execucao
+from .categoria import RecorrenciaModel
+from .categoria import TarefaModel
+from .questionario import OpcaoModel
+from .questionario import PerguntaModel
+from .questionario import QuestionarioModel
+from .questionario import RespostaModel
 from .usuario import UsuarioModel
 
 __all__ = [
@@ -16,5 +21,5 @@ __all__ = [
     'QuestionarioModel',
     'RespostaModel',
     'OpcaoModel',
-    'UsuarioModel'
+    'UsuarioModel',
 ]

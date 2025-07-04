@@ -6,6 +6,10 @@ import joblib
 import pandas as pd
 from fastapi import HTTPException
 from fastapi import status
+from models.categoria import CategoriaModel
+from models.categoria import TarefaModel
+from schemas import ConjuntoTreinamento
+from schemas.datasetTarefas import DatasetTarefas
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics import classification_report
 from sklearn.model_selection import train_test_split
@@ -16,10 +20,6 @@ from sklearn.preprocessing import LabelEncoder
 from sqlalchemy.orm import Session
 
 from database.database import engine
-from models.categoria import CategoriaModel
-from models.categoria import TarefaModel
-from schemas import ConjuntoTreinamento
-from schemas.datasetTarefas import DatasetTarefas
 
 
 class CategoriaMLService:
