@@ -14,8 +14,8 @@ Veja a apresentação do site em: https://www.youtube.com/watch?v=J5EoOjXckBQ
 
 1. **Clone o repositório**:
     ```bash
-    git clone https://github.com/michellerodrigues/meu-checklist-tarefas-mvp.git
-    cd meu-checklist-tarefas-mvp
+    git clone https://github.com/michellerodrigues/meu-checklist-tarefas-api.git
+    cd meu-checklist-tarefas-api
     ```
 
 2. **Crie e ative um ambiente virtual**:
@@ -48,8 +48,8 @@ Veja a apresentação do site em: https://www.youtube.com/watch?v=J5EoOjXckBQ
 A escolha do uvicorn + FastApi ajudou na documentação automática, para colocar o swagger :)
 
     ```bash
-    cd src
-    uvicorn main:app --reload --port 8002
+    pip install -e .
+    python -m uvicorn src.main:app --reload --port 8002
     ```
 
 7. **Acesse a documentação**:
@@ -62,7 +62,7 @@ A escolha do uvicorn + FastApi ajudou na documentação automática, para coloca
 
 
 ```text
-meu-checklist-tarefas-mvp/
+meu-checklist-tarefas-api/
 ./src
 ├── database/
 │   ├── banco_tarefas.sqlite3
