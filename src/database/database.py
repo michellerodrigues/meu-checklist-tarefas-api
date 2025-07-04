@@ -6,19 +6,15 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy_utils import create_database
 from sqlalchemy_utils import database_exists
+from dotenv import load_dotenv
+
+
+# Carrega variáveis do .env
+load_dotenv('src/config.env')
+
 
 # url de acesso ao banco (essa é uma url de acesso ao sqlite local
-DB_PATH = 'database'
-
-
-# Verifica se o diretorio não existe
-if not os.path.exists(DB_PATH):
-    # então cria o diretorio
-    os.makedirs(DB_PATH)
-
-
-# Configuração do SQLAlchemy
-SQLALCHEMY_DATABASE_URL = f"sqlite:///{DB_PATH}/banco_tarefas.sqlite3"  # SQLite local
+SQLALCHEMY_DATABASE_URL = os.getenv("SQLALCHEMY_DATABASE_URL")
 
 # cria a engine de conexão com o banco
 engine = create_engine(

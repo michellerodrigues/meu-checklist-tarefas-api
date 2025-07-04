@@ -15,11 +15,11 @@ from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import LabelEncoder
 from sqlalchemy.orm import Session
 
-from src.database.database import engine
-from src.models.categoria import CategoriaModel
-from src.models.categoria import TarefaModel
-from src.schemas import ConjuntoTreinamento
-from src.schemas.datasetTarefas import DatasetTarefas
+from database.database import engine
+from models.categoria import CategoriaModel
+from models.categoria import TarefaModel
+from schemas import ConjuntoTreinamento
+from schemas.datasetTarefas import DatasetTarefas
 
 
 class CategoriaMLService:

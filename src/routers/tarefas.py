@@ -3,13 +3,12 @@ from __future__ import annotations
 from database.database import SessionLocal
 from fastapi import APIRouter
 from fastapi import Depends
-from schemas.categoria import Tarefa
-from schemas.categoria import TarefaCreate
+from schemas.categoria import Tarefa, TarefaCreate
 from services.categorias import buscar_categoria
+from services.categoriaMLService import CategoriaMLService
 from services.tarefas import criar_tarefa
 from sqlalchemy.orm import Session
 
-from src.machine_learning import prever_categoria
 
 router = APIRouter(prefix='/tarefas', tags=['Tarefas'])
 
@@ -33,7 +32,7 @@ def criar_nova_tarefa(
     db: Session = Depends(get_db),
 ):
 
-    categoria_nome = prever_categoria(nova_tarefa.descricao)
+    categoria_nome = CategoriaMLService.prever_categoria(nova_tarefa.descricao)
 
     categoria = buscar_categoria(categoria_nome, db)
 
