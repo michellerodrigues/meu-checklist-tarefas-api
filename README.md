@@ -2,9 +2,11 @@
 
 1ª Entrega trabalho PUC-Rio, CCE Extensão - Engenharia de Software (Michelle Rodrigues - Matricula 10914039709)
 
-Para entender o Contexto:
+Para entender o Contexto (sprint anterior):
 https://github.com/michellerodrigues/meu-checklist-tarefas-mvp/blob/main/leia-me/Documentacao-Entrega.md
 
+Esta solução PerSpecML => 
+US1 - COMO usuária do site meu-checklist-tarefas QUERO realizar a classificação automática de uma tarefa PARA saber em qual categoria ela se encaixa melhor.
 
 Veja a apresentação do site em: https://www.youtube.com/watch?v=J5EoOjXckBQ
 
