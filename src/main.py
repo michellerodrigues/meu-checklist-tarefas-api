@@ -2,12 +2,11 @@ from __future__ import annotations
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-
 from routers.autenticacao import router as autenticacao_router
 from routers.categorias import router as categorias_router
 from routers.questionario import router as questionario_router
-from routers.tarefas import router as tarefas_router
 from routers.recorrencias import router as recorrencias_router
+from routers.tarefas import router as tarefas_router
 
 app = FastAPI(
     docs_url='/meu-checklist-tarefas-doc',
@@ -23,7 +22,7 @@ app = FastAPI(
 # CORS
 app.add_middleware(
     CORSMiddleware,
-    #allow_origins=['http://localhost:8006'],  # Ou "*" para permitir todas
+    # allow_origins=['http://localhost:8006'],  # Ou "*" para permitir todas
     allow_origins=['*'],  # Ou "*" para permitir todas
     allow_credentials=True,
     allow_methods=['*'],  # Ou ["GET", "POST", ...]

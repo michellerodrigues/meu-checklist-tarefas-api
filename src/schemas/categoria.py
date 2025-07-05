@@ -85,9 +85,9 @@ class CarregaPainelUsuarioResponse(BaseModel):
 
 class CategoriaCombo(BaseModel):
     descricao: str
-    id:int
-    selecionado:bool
+    id: int
+    selecionado: bool
+
 
 class CarregaCategoriaComboResponse(BaseModel):
     categorias: list[CategoriaCombo] = []
-

@@ -4,7 +4,6 @@ import time
 
 import joblib
 import pandas as pd
-from database.database import engine
 from models.categoria import CategoriaModel
 from models.categoria import TarefaModel
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -15,6 +14,8 @@ from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import LabelEncoder
 from sqlalchemy import select
 from sqlalchemy.orm import Session
+
+from database.database import engine
 
 
 class DatasetTarefas:
@@ -159,16 +160,24 @@ print(
 )
 
 nova_tarefa = 'instalar sistema de irrigação das plantas'
-print(f"A tarefa '{nova_tarefa}' pertence à categoria: {prever_categoriav0(nova_tarefa)}")
+print(
+    f"A tarefa '{nova_tarefa}' pertence à categoria: {prever_categoriav0(nova_tarefa)}",
+)
 
 nova_tarefa = 'organizar calendário de provas'
-print(f"A tarefa '{nova_tarefa}' pertence à categoria: {prever_categoriav0(nova_tarefa)}")
+print(
+    f"A tarefa '{nova_tarefa}' pertence à categoria: {prever_categoriav0(nova_tarefa)}",
+)
 
 nova_tarefa = 'Comprar protetor de colchão para idosos'
-print(f"A tarefa '{nova_tarefa}' pertence à categoria: {prever_categoriav0(nova_tarefa)}")
+print(
+    f"A tarefa '{nova_tarefa}' pertence à categoria: {prever_categoriav0(nova_tarefa)}",
+)
 
 nova_tarefa = 'recarregar o bilhete do metrô'
-print(f"A tarefa '{nova_tarefa}' pertence à categoria: {prever_categoriav0(nova_tarefa)}")
+print(
+    f"A tarefa '{nova_tarefa}' pertence à categoria: {prever_categoriav0(nova_tarefa)}",
+)
 
 tempo_final_prepropocessamento = time.time()
 print('Criando Pré-processamento....FIM:', tempo_final_prepropocessamento)

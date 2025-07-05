@@ -27,8 +27,8 @@ def get_db():
 )
 def get_recorrencias(
     db: Session = Depends(get_db),
-) -> list[ListarRecorrenciaResponse] :
+) -> list[ListarRecorrenciaResponse]:
 
     recorrencias = listar_recorrencias(db)
 
-    return [{"id": rec.id, "descricao": rec.descricao} for rec in recorrencias]
+    return [{'id': rec.id, 'descricao': rec.descricao} for rec in recorrencias]

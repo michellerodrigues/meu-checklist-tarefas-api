@@ -1,23 +1,22 @@
 from __future__ import annotations
 
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter
 from fastapi import Depends
+from fastapi import HTTPException
+from models.categoria import CategoriaModel
+from schemas.categoria import CarregaCategoriaComboResponse
+from schemas.categoria import CarregaPainelUsuarioResponse
+from schemas.categoria import Categoria as CategoriaSchema
+from schemas.categoria import CategoriaCreate as CategoriaCreateSchema
 from schemas.converters import CategoriaConverter
+from services.categoriaMLService import CategoriaMLService
+from services.categorias import buscar_categoria
+from services.categorias import criar_categoria
+from services.categorias import ler_categoria
+from services.categorias import listar_categorias
 from sqlalchemy.orm import Session
 
 from database.database import SessionLocal
-from schemas.categoria import (
-    CarregaCategoriaComboResponse,
-    CarregaPainelUsuarioResponse,
-)
-from schemas.categoria import Categoria as CategoriaSchema
-from schemas.categoria import CategoriaCreate as CategoriaCreateSchema
-from services.categorias import buscar_categoria, criar_categoria
-from services.categorias import ler_categoria
-from services.categorias import listar_categorias
-from models.categoria import CategoriaModel
-
-from services.categoriaMLService import CategoriaMLService
 
 router = APIRouter(prefix='/categorias', tags=['Categorias'])
 
@@ -63,27 +62,28 @@ def get_all_categorias(db: Session = Depends(get_db)):
 def obter_categoria(categoria_id: int, db: Session = Depends(get_db)) -> CategoriaModel:
     return ler_categoria(categoria_id, db)
 
+
 @router.get(
     '/ml/{nome_tarefa}',
     response_model=CarregaCategoriaComboResponse,
     summary='Obtem do modelo de aprendizado a categoria de acordo com o nome da tarefa',
     response_description='Predição da categoria de acordo com o Algoritmo de IA',
 )
-def get_ml_categoria(nome_tarefa:str, db: Session = Depends(get_db)):
-    
+def get_ml_categoria(nome_tarefa: str, db: Session = Depends(get_db)):
+
     ml_service = CategoriaMLService()
 
-   # sugestaoIACategoria = prever_categoriaV0(nome_tarefa, threshold=0.05)
+    # sugestaoIACategoria = prever_categoriaV0(nome_tarefa, threshold=0.05)
     sugestaoIACategoria = ml_service.prever_categoria(nome_tarefa, threshold=0.05)
-    
-    categoriaEncontradaIA = buscar_categoria(sugestaoIACategoria,db)
+
+    categoriaEncontradaIA = buscar_categoria(sugestaoIACategoria, db)
 
     if categoriaEncontradaIA is None:
-        raise HTTPException(status_code=400, detail='Categoria prevista pela IA não está cadastrada na base de dados')
+        raise HTTPException(
+            status_code=400,
+            detail='Categoria prevista pela IA não está cadastrada na base de dados',
+        )
 
-    db_categoria = (
-        db.query(CategoriaModel)
-        .all()
-    )
+    db_categoria = db.query(CategoriaModel).all()
 
     return CategoriaConverter.to_categoria_combo(db_categoria, categoriaEncontradaIA)
