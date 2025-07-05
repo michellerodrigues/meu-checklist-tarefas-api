@@ -4,9 +4,7 @@ from fastapi import APIRouter
 from fastapi import Depends
 from schemas.categoria import Tarefa
 from schemas.categoria import TarefaCreate
-from services.categoriaMLService import CategoriaMLService
-from services.categorias import buscar_categoria
-from services.tarefas import criar_tarefa
+from services.tarefas import criar_tarefa, ler_categoria
 from sqlalchemy.orm import Session
 
 from database.database import SessionLocal
@@ -33,11 +31,7 @@ def criar_nova_tarefa(
     db: Session = Depends(get_db),
 ):
 
-    categoria_nome = CategoriaMLService.prever_categoria(nova_tarefa.descricao)
-
-    categoria = buscar_categoria(categoria_nome, db)
-
-    nova_tarefa.categoria_id = categoria.id
-    nova_tarefa.recorrencia_id = 1
+    categoriaModelRetorno = ler_categoria(nova_tarefa.categoria_id,db);    
+    nova_tarefa.categoria_id = categoriaModelRetorno.id
 
     return criar_tarefa(nova_tarefa, db)

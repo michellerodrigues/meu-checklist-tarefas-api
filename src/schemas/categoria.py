@@ -57,6 +57,7 @@ class Tarefa(TarefaBase):
 
 
 class RecorrenciaBase(BaseModel):
+    id: int
     descricao: str
 
 
@@ -80,3 +81,13 @@ class TarefaUsuario(BaseModel):
 class CarregaPainelUsuarioResponse(BaseModel):
     categoria: str
     tarefas: list[TarefaUsuario] = []
+
+
+class CategoriaCombo(BaseModel):
+    descricao: str
+    id:int
+    selecionado:bool
+
+class CarregaCategoriaComboResponse(BaseModel):
+    categorias: list[CategoriaCombo] = []
+

@@ -137,7 +137,7 @@ print(
     return le.inverse_transform([encoded])[0] """
 
 
-def prever_categoria(tarefa, threshold=0.45):
+def prever_categoriav0(tarefa, threshold=0.45):
     # Obtém as probabilidades para todas as classes
     probas = model.predict_proba([tarefa])[0]
     max_proba = max(probas)
@@ -155,20 +155,20 @@ def prever_categoria(tarefa, threshold=0.45):
 # Exemplo de uso
 nova_tarefa = 'substituir escovas de dente'
 print(
-    f"\nA tarefa '{nova_tarefa}' pertence à categoria: {prever_categoria(nova_tarefa)}",
+    f"\nA tarefa '{nova_tarefa}' pertence à categoria: {prever_categoriav0(nova_tarefa)}",
 )
 
 nova_tarefa = 'instalar sistema de irrigação das plantas'
-print(f"A tarefa '{nova_tarefa}' pertence à categoria: {prever_categoria(nova_tarefa)}")
+print(f"A tarefa '{nova_tarefa}' pertence à categoria: {prever_categoriav0(nova_tarefa)}")
 
 nova_tarefa = 'organizar calendário de provas'
-print(f"A tarefa '{nova_tarefa}' pertence à categoria: {prever_categoria(nova_tarefa)}")
+print(f"A tarefa '{nova_tarefa}' pertence à categoria: {prever_categoriav0(nova_tarefa)}")
 
 nova_tarefa = 'Comprar protetor de colchão para idosos'
-print(f"A tarefa '{nova_tarefa}' pertence à categoria: {prever_categoria(nova_tarefa)}")
+print(f"A tarefa '{nova_tarefa}' pertence à categoria: {prever_categoriav0(nova_tarefa)}")
 
 nova_tarefa = 'recarregar o bilhete do metrô'
-print(f"A tarefa '{nova_tarefa}' pertence à categoria: {prever_categoria(nova_tarefa)}")
+print(f"A tarefa '{nova_tarefa}' pertence à categoria: {prever_categoriav0(nova_tarefa)}")
 
 tempo_final_prepropocessamento = time.time()
 print('Criando Pré-processamento....FIM:', tempo_final_prepropocessamento)

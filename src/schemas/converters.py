@@ -5,7 +5,7 @@ import json
 from models.categoria import CategoriaModel
 from models.questionario import OpcaoModel
 from models.questionario import PerguntaModel
-from .categoria import CarregaPainelUsuarioResponse
+from .categoria import CarregaCategoriaComboResponse, CarregaPainelUsuarioResponse, CategoriaCombo
 from .categoria import TarefaUsuario
 
 
@@ -86,3 +86,20 @@ class CategoriaConverter:
             return json.loads(tags) if tags else []  # noqa: W0718
         except Exception:
             return []
+    
+    @staticmethod
+    def to_categoria_combo(
+        categoria_model: list[CategoriaModel], categoria_ia:CategoriaModel,
+    ) -> CarregaCategoriaComboResponse:
+        
+        comboCategoria = CarregaCategoriaComboResponse()
+
+        for categoria in categoria_model:
+            cat = CategoriaCombo(id=categoria.id, descricao=categoria.nome, selecionado=False)
+            
+            if categoria_ia.nome==categoria.nome:
+                cat.selecionado = True
+                
+            comboCategoria.categorias.append(cat)
+        
+        return comboCategoria

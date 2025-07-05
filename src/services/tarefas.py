@@ -4,7 +4,7 @@ from fastapi import HTTPException
 from sqlalchemy.orm import selectinload
 from sqlalchemy.orm import Session
 
-from models.categoria import CategoriaModel
+from models.categoria import CategoriaModel, RecorrenciaModel
 from models.categoria import TarefaModel
 from schemas.categoria import (
     CarregaPainelUsuarioResponse,
@@ -19,7 +19,7 @@ def criar_tarefa(nova_tarefa: TarefaCreate, db: Session) -> TarefaModel:
         descricao = nova_tarefa.descricao,
         categoria_id = nova_tarefa.categoria_id,
         recorrencia_id = nova_tarefa.recorrencia_id,
-        tags = "")
+        tags = nova_tarefa.tags)
 
 
     db.add(db_tarefa)
@@ -58,3 +58,11 @@ def buscar_categoria(categoria_nome: str, db: Session) -> CategoriaModel:
     if db_categoria is None:
         raise HTTPException(status_code=404, detail='Categoria não encontrada')
     return db_categoria
+
+def listar_recorrencias(db: Session) -> RecorrenciaModel:
+    db_recorrencias = (
+        db.query(RecorrenciaModel).all()
+    )
+    if db_recorrencias is None:
+        raise HTTPException(status_code=404, detail='Recorrencias não cadastradas')
+    return db_recorrencias

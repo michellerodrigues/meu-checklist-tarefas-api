@@ -37,7 +37,7 @@ class TarefaModel(BaseModel):
 
 class RecorrenciaModel(BaseModel):
     """A Recorrência classifica em 'Diária','Semanal','Mensal' cada tarefa que se relaciona com ela
-    # A recorrencia da tarefa endeceçará os eventos de verificação de tarefas em atraso, etc.
+     A recorrencia da tarefa endeceçará os eventos de verificação de tarefas em atraso, etc.
     """
 
     __tablename__ = 'recorrencias'
