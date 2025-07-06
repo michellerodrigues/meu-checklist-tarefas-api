@@ -7,7 +7,7 @@ from database.database import engine
 
 from sqlalchemy.orm import Session
 import pickle
-
+import csv
 
 
 class DatasetTarefas:
@@ -34,6 +34,36 @@ def obter_dataset(db: Session) -> DatasetTarefas:
     return dataset
 
 
+
+def criar_csv_database():
+    """Exporta os dados do banco para um arquivo CSV"""
+    nome_arquivo: str = 'dataset_tarefas.csv'
+
+    db = Session(engine)
+
+    try:
+        # Obter os dados do banco
+        dataset = obter_dataset(db)
+        
+        # Criar e escrever o arquivo CSV
+        with open(nome_arquivo, 'w', newline='', encoding='utf-8') as arquivo_csv:
+            writer = csv.writer(arquivo_csv)
+            
+            # Escrever cabeçalho
+            writer.writerow(['tarefa', 'categoria'])
+            
+            # Escrever linhas de dados
+            for tarefa, categoria in zip(dataset.tarefa, dataset.categoria):
+                writer.writerow([tarefa, categoria])
+                
+        print(f"Dados exportados com sucesso para {nome_arquivo}")
+        
+    except Exception as e:
+        print(f"Erro ao exportar para CSV: {str(e)}")
+    finally:
+        db.close()
+
+
 def criar_pkl_database():
     
     nome_arquivo: str = 'dataset_tarefas.pkl'
@@ -53,7 +83,7 @@ def criar_pkl_database():
     with open(nome_arquivo, 'wb') as arquivo:
         pickle.dump(dados_para_exportar, arquivo)
 
+
 #Criando o arquivo para preparação do colab
-
 criar_pkl_database()
-
+criar_csv_database()

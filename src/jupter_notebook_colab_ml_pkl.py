@@ -11,8 +11,6 @@ import nltk
 import numpy as np
 import pandas as pd
 import seaborn as sns
-from models.categoria import CategoriaModel
-from models.categoria import TarefaModel
 from nltk.corpus import stopwords
 from sklearn.ensemble import VotingClassifier
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -28,10 +26,8 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.preprocessing import StandardScaler
 from sklearn.svm import SVC
 from sklearn.tree import DecisionTreeClassifier
-from sqlalchemy import select
-from sqlalchemy.orm import Session
 
-from database.database import engine
+
 
 # Configurações iniciais
 nltk.download('stopwords')
