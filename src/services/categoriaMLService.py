@@ -288,6 +288,6 @@ class CategoriaMLService:
                 'created_at': pd.Timestamp.now(),
                 'version': '1.0',
                 'description': 'Modelo de classificação meu checklist tarefas',
-            },
+            }            
         }
         joblib.dump(to_persist, caminho)
