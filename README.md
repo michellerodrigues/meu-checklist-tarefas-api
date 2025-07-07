@@ -106,7 +106,7 @@ Gráfico
 4 - Integração Front x Backend na rota de cadastro de tarefas. Onde o usuário digita a tarefa e o backend prevê a categoria. Caso a categoria não seja satisfatória( Outros), o usuário pode selecionar outra antes de cadastrar a tarefa.
 
 4.1 - Cadastrando uma nova Tarefa (Categoria informada automaticamente)
-![alt text](./leia-me/imagens/Captura de tela 2025-07-05 162947.png)
+![alt text](./leia-me/imagens/<Captura de tela 2025-07-05 162947.png>)
 
 ![alt text](./leia-me/imagens/Captura de tela 2025-07-05 163154.png) 
 
