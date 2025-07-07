@@ -37,6 +37,8 @@ Sistema: API REST com endpoint /GET/api/categorias/ml/{nome_tarefa}
 
 
 ***[FUNCIONALIDADES ENTREGUES]***
+
+
 2 - Disponibilização de Cadastro de Tarefa para o usuário, com inteligência artifical no backend,
 ![Captura de tela 2025-07-05 162947](https://github.com/user-attachments/assets/56edf713-54a9-4afa-9734-d738633a5c18)
 
