@@ -38,7 +38,8 @@ Sistema: API REST com endpoint /GET/api/categorias/ml/{nome_tarefa}
 
 ***[FUNCIONALIDADES ENTREGUES]***
 2 - Disponibilização de Cadastro de Tarefa para o usuário, com inteligência artifical no backend,
-<<imagem>>
+![Captura de tela 2025-07-05 162947](https://github.com/user-attachments/assets/56edf713-54a9-4afa-9734-d738633a5c18)
+
 
 3 - Implementação de Software integigente com análise preditiva para a classificação de Tarefas em suas categorias.
 32.1 - Execute o Notebook em: 
