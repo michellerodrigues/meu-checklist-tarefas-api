@@ -12,6 +12,7 @@ Melhorias efetuadas:
 [DISCIPLINA SOFTWARE INTELIGENTES]
 
 1 - PerSpecML => 
+
 US1 - COMO usuária do site meu-checklist-tarefas QUERO realizar a classificação automática de uma tarefa PARA saber em qual categoria ela se encaixa melhor.
 1.1 - Requisitos de Negócio
    Objetivo: Classificar tarefas domésticas em categorias pré-definidas com acurácia ≥ 85%.
