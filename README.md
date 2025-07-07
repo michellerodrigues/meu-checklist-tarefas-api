@@ -5,8 +5,6 @@
 Para entender o Contexto/Executar a aplicação pela primeira vez (sprint anterior):
 Leia: README_1aEntrega.md
 
-Esta solução PerSpecML => 
-US1 - COMO usuária do site meu-checklist-tarefas QUERO realizar a classificação automática de uma tarefa PARA saber em qual categoria ela se encaixa melhor.
 Melhorias efetuadas:
 
 [DISCIPLINA SOFTWARE INTELIGENTES]
