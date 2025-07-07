@@ -105,13 +105,20 @@ Gráfico
 
 4 - Integração Front x Backend na rota de cadastro de tarefas. Onde o usuário digita a tarefa e o backend prevê a categoria. Caso a categoria não seja satisfatória( Outros), o usuário pode selecionar outra antes de cadastrar a tarefa.
 
-4.1 - Cadastrando uma nova Tarefa (Categoria informada automaticamente)
-![alt text](./leia-me/imagens/<Captura de tela 2025-07-05 162947.png>)
 
-![alt text](./leia-me/imagens/Captura de tela 2025-07-05 163154.png) 
+4.1 - Cadastrando uma nova Tarefa (Categoria informada automaticamente)
+
+![alt text](leia-me/imagens/nova-tarefa.png) 
+
+![alt text](leia-me/imagens/tarefa-nova-mensagem.png)
+
 
 4.2 - Nova Tarefa cadastrada na base de dados
-![alt text](./leia-me/imagens/Captura de tela 2025-07-05 163002.png) 
+
+![alt text](leia-me/imagens/nova-tarefa-banco.png) 
+
+![alt text](leia-me/imagens/tarefa-cadastrada.png)
+
 
 4.3 - Tag do Usuário
 [DÉBITO TÉCNICO]: Atualmente, dada a modelagem inicial das tags do usuário estarem atreladas ao questionário, 
