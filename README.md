@@ -5,6 +5,8 @@
 Para entender o Contexto/Executar a aplicação pela primeira vez (sprint anterior):
 Leia: README_1aEntrega.md
 
+VÍDEO DE APRESENTAÇÃO: https://youtu.be/fj8qZeDJJJU
+
 Melhorias efetuadas:
 
 [DISCIPLINA SOFTWARE INTELIGENTES]
