@@ -133,10 +133,12 @@ o Backend passasse pela aanálise preditiva e devolvesse o valor da Categoria.
 ![alt text](<Captura de tela 2025-07-05 163040.png>)
 
 5 - Incorporação e melhoria da base de dados, agora com +10K de tarefas cadastradas
+
 5.1 - Utilização de MLA ([manus](https://manus.im/app)) para gerar tarefas para o dataset
 
 6 - Disponibilização do dataset exemplo utilizado na solução. 
 <<LInk do Git>>
+
 
 [DISCIPLINA QUALIDADE DE SOFTWARE]
 7 - Implementação de testes de Automatizados para verificação de acurária e probabilidade
@@ -147,7 +149,7 @@ Para executar:
     cd meu-checklist-tarefas-api
     pytest  meu_checklit_trarefas_testes_automatizados.py -v
     ```
-67.1 - Exemplo execução
+7.1 - Exemplo execução
 ![alt text](./leia-me/imagens/image.png)
 
 
