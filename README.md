@@ -130,6 +130,17 @@ o Backend passasse pela aanálise preditiva e devolvesse o valor da Categoria.
 
 ![alt text](<Captura de tela 2025-07-05 163040.png>)
 
+4.4 - Atualmente a api de cadastro de tarefas está executando do zero a criação do dataset (baseado no banco de dados), o treinamento e teste do modelo. 
+estou utilizando o NB por ter apresendado melhor performace no Colab.
+
+4.5 - Disponibilizei também o joblib tanto com o modelo treinado em NB, quando com o Ensemble com os algoritmos (explico melhor no Colabs e na seção de Arquivos auxiliares.
+
+Ou seja:
+
+4.6 - Toda vez que inserimos uma tarefa, todo o modelo é treinado novamente. (melhoria contínua)
+
+4.7 [DÉBITO TÉCNICO] Implementar Reforço positivo/negativo e novas trigers para identificar o momento de retreinar o modelo.
+
 5 - Incorporação e melhoria da base de dados, agora com +10K de tarefas cadastradas
 
 5.1 - Utilização de MLA ([manus](https://manus.im/app)) para gerar tarefas para o dataset
