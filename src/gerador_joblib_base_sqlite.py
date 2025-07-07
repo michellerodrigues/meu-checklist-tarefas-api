@@ -102,7 +102,9 @@ def evaluate_model(model, X_train, y_train, X_test, y_test, model_name):
     y_pred = model.predict(X_test)
     print(f"\nRelatório de classificação para {model_name}:")
     print(
-        classification_report(y_test, y_pred, zero_division=0, target_names=le.classes_),
+        classification_report(
+            y_test, y_pred, zero_division=0, target_names=le.classes_,
+        ),
     )
 
     print(f"Tempo de execução: {time.time() - start_time:.2f} segundos")
@@ -121,7 +123,9 @@ def evaluate_model(model, X_train, y_train, X_test, y_test, model_name):
 models = [
     (
         'Naive Bayes',
-        make_pipeline(TfidfVectorizer(stop_words=stop_words_pt, lowercase=True), MultinomialNB()),
+        make_pipeline(
+            TfidfVectorizer(stop_words=stop_words_pt, lowercase=True), MultinomialNB(),
+        ),
     ),
     (
         'KNN',
@@ -181,7 +185,12 @@ for name, model in models:
 
     # Avaliação do melhor modelo
     result = evaluate_model(
-        best_model, X_train, y_train, X_test, y_test, f"{name} (Otimizado)",
+        best_model,
+        X_train,
+        y_train,
+        X_test,
+        y_test,
+        f"{name} (Otimizado)",
     )
     results.append(result)
 
@@ -205,7 +214,8 @@ print(f"Melhor modelo individual: {melhor_modelo_nome}")
 # Ensemble com os melhores modelos
 print('\nCriando ensemble com os melhores modelos...')
 ensemble = VotingClassifier(
-    estimators=[(name, model) for name, model in best_models.items()], voting='soft',
+    estimators=[(name, model) for name, model in best_models.items()],
+    voting='soft',
 )
 
 ensemble_result = evaluate_model(ensemble, X_train, y_train, X_test, y_test, 'Ensemble')
@@ -243,19 +253,19 @@ for task in test_cases:
 # NB
 melhor_modelo_base = melhor_modelo_nome.split(' (Otimizado)')[0]
 melhor_modelo_indiv_nb = best_models[melhor_modelo_base]
-vectorizerNB = melhor_modelo_indiv_nb.named_steps['tfidfvectorizer'] 
+vectorizerNB = melhor_modelo_indiv_nb.named_steps['tfidfvectorizer']
 
 to_persist = {
     'ensemble': ensemble,
     'melhor_modelo_individual': melhor_modelo_indiv_nb,
     'comparison': comparison,
-    'vectorizer': vectorizerNB, 
+    'vectorizer': vectorizerNB,
     'label_encoder': le,
     'classes': le.classes_,
     'metadata': {
         'melhor_modelo': melhor_modelo_base,
-        'data_treinamento': pd.Timestamp.now()
-    }
+        'data_treinamento': pd.Timestamp.now(),
+    },
 }
 
 joblib.dump(to_persist, 'modelo_completo.joblib')

@@ -42,3 +42,8 @@ disable = "missing-class-docstring,missing-module-docstring,missing-function-doc
 [tool.pylint.DESIGN]
 disable = "too-few-public-methods"  # Desativa completamente
 ignored-classes = "BaseModel"  # Herdadas de Pydantic
+
+[tool.poetry.dependencies]
+numpy = "^2.3.1"
+pandas = "^2.3.0"
+scikit-learn = "^1.7.0"

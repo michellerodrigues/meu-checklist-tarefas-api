@@ -195,7 +195,7 @@ class CategoriaMLService:
         """Configura e treina o modelo de machine learning"""
         try:
 
-            print('Criando pipeline TF-IDF + Naive Bayes...')
+            print('Criando pipeline TF-IDF + Naive Bayes..., de acordo com o resultado do colab')
             # Criação do pipeline
             pipeline = make_pipeline(
                 TfidfVectorizer(stop_words=self.stop_words_custom),

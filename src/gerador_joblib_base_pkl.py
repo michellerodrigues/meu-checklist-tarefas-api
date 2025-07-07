@@ -98,7 +98,10 @@ def evaluate_model(model, X_train, y_train, X_test, y_test, model_name):
     print(f"\nRelatório de classificação para {model_name}:")
     print(
         classification_report(
-            y_test, y_pred, zero_division=0, target_names=le.classes_,
+            y_test,
+            y_pred,
+            zero_division=0,
+            target_names=le.classes_,
         ),
     )
 
@@ -228,7 +231,6 @@ def prever_categoria(tarefa, threshold=0.45):
     return le.inverse_transform([encoded])[0]
 
 
-
 melhor_modelo_base = melhor_modelo_nome.split(' (Otimizado)')[0]
 
 to_persist = {
@@ -237,8 +239,8 @@ to_persist = {
     'comparison': comparison,
     'metadata': {
         'melhor_modelo': melhor_modelo_base,
-        'data_treinamento': pd.Timestamp.now()
-    }
+        'data_treinamento': pd.Timestamp.now(),
+    },
 }
 
 joblib.dump(to_persist, 'modelo_completo.joblib')
@@ -247,4 +249,3 @@ joblib.dump(to_persist, 'modelo_completo.joblib')
 for name, model in best_models.items():
     melhor_modelo_base = name.split(' (Otimizado)')[0]
     joblib.dump(model, f'modelo_{melhor_modelo_base.lower().replace(" ", "_")}.joblib')
-

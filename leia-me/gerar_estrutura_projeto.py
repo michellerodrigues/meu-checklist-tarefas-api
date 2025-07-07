@@ -5,6 +5,7 @@ import os
 # Para gerar as dependencias explicitas: pipreqs . --force
 # Para gerar a árvore de pastas: pip freeze > estrutura.txt
 
+# pipreqs . --force --encoding=utf-8
 
 def gerar_estrutura_projeto(startpath, output_file, exclude_dirs=None):
     """

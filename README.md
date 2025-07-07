@@ -2,11 +2,8 @@
 
 1ª Entrega trabalho PUC-Rio, CCE Extensão - Engenharia de Software (Michelle Rodrigues - Matricula 10914039709)
 
-Para entender o Contexto (sprint anterior):
+Para entender o Contexto :
 https://github.com/michellerodrigues/meu-checklist-tarefas-mvp/blob/main/leia-me/Documentacao-Entrega.md
-
-Esta solução PerSpecML => 
-US1 - COMO usuária do site meu-checklist-tarefas QUERO realizar a classificação automática de uma tarefa PARA saber em qual categoria ela se encaixa melhor.
 
 Veja a apresentação do site em: https://www.youtube.com/watch?v=J5EoOjXckBQ
 
@@ -140,40 +137,6 @@ meu-checklist-tarefas-api/
 
 4 - Painel do Usuário
 ![image](https://github.com/user-attachments/assets/9ce0493c-f579-4547-a79f-141c56a75b9e)
-
-
-## Frontend entregue - versão web
-
-1 - Para executar:
-  ```
-    > git clone https://github.com/michellerodrigues/meu-checklist-tarefas-mvp.git
-    > cd meu-checklist-tarefas-mvp/front
-    > python -m http.server 8005
-  ```
-
-
-2 - Estrutura de Pastas
-```text
-./front
-├── cadastro.css
-├── cadastro.html
-├── index.css
-├── index.html
-├── painelUsuario.css
-├── painelUsuario.html
-├── questionario.css
-├── questionario.html
-├── readme.md
-├── js/
-│   ├── index.js
-│   ├── painelUsuario.js
-│   ├── questionario.js
-│   ├── script-cadastro.js
-│   ├── scripts.js
-
-
-```
-
 
 
 OBRIGADA POR LER ATÉ AQUI!!!! :)

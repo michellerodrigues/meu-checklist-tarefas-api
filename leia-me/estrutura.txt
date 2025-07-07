@@ -1,0 +1,102 @@
+./
+├── .gitignore
+├── .pre-commit-config.yaml
+├── .pylintrc
+├── dataset_tarefas.csv
+├── dataset_tarefas.pkl
+├── dependencias.txt
+├── estrutura.txt
+├── meu_checklit_trarefas_testes_automatizados.py
+├── modelo_completo.joblib
+├── modelo_knn.joblib
+├── modelo_naive_bayes.joblib
+├── modelo_svm.joblib
+├── modelo_árvore_de_decisão.joblib
+├── Notebook Classificação - Meu Cheklist Tarefas.ipynb
+├── README.md
+├── README_2aEntrega.md
+├── requirements.txt
+├── utilizadorJobLib.py
+├── database/
+│   ├── banco_tarefas.sqlite3
+├── leia-me/
+│   ├── Documentacao-Entrega.md
+│   ├── estrutura-api.txt
+│   ├── estrutura.txt
+│   ├── gerar_estrutura_projeto.py
+│   ├── MeuCheckLisTarefas-Apresentação.pptx
+│   ├── readme.md
+│   ├── imagens/
+│   │   ├── Captura de tela 2025-07-05 162947.png
+│   │   ├── Captura de tela 2025-07-05 163002.png
+│   │   ├── Captura de tela 2025-07-05 163040.png
+│   │   ├── Captura de tela 2025-07-05 163154.png
+│   │   ├── comparacao_modelos.png
+│   │   ├── image-1.png
+│   │   ├── image-10.png
+│   │   ├── image-11.png
+│   │   ├── image-12.png
+│   │   ├── image-13.png
+│   │   ├── image-14.png
+│   │   ├── image-15.png
+│   │   ├── image-16.png
+│   │   ├── image-17.png
+│   │   ├── image-18.png
+│   │   ├── image-2.png
+│   │   ├── image-3.png
+│   │   ├── image-4.png
+│   │   ├── image-5.png
+│   │   ├── image-6.png
+│   │   ├── image-7.png
+│   │   ├── image-8.png
+│   │   ├── image-9.png
+│   │   ├── image.png
+├── src/
+│   ├── config.env
+│   ├── gerador_joblib_base_pkl.py
+│   ├── gerador_joblib_base_sqlite.py
+│   ├── gerador_pkl_baseado_sqlite.py
+│   ├── main.py
+│   ├── pyproject.toml
+│   ├── __init__.py
+│   ├── database/
+│   │   ├── banco_tarefas.sqlite3
+│   │   ├── database.py
+│   ├── hooks/
+│   ├── meu_checklist_tarefas.egg-info/
+│   │   ├── dependency_links.txt
+│   │   ├── PKG-INFO
+│   │   ├── SOURCES.txt
+│   │   ├── top_level.txt
+│   ├── models/
+│   │   ├── base.py
+│   │   ├── categoria.py
+│   │   ├── questionario.py
+│   │   ├── usuario.py
+│   │   ├── __init__.py
+│   ├── routers/
+│   │   ├── autenticacao.py
+│   │   ├── categorias.py
+│   │   ├── questionario.py
+│   │   ├── recorrencias.py
+│   │   ├── tarefas.py
+│   │   ├── __init__.py
+│   ├── schemas/
+│   │   ├── base.py
+│   │   ├── categoria.py
+│   │   ├── conjunto_treinamento.py
+│   │   ├── converters.py
+│   │   ├── datasetTarefas.py
+│   │   ├── questionario.py
+│   │   ├── usuario.py
+│   │   ├── __init__.py
+│   ├── security/
+│   │   ├── security.py
+│   │   ├── __init__.py
+│   ├── services/
+│   │   ├── autenticacao.py
+│   │   ├── categoriaMLService.py
+│   │   ├── categorias.py
+│   │   ├── questionario.py
+│   │   ├── tarefas.py
+│   │   ├── __init__.py
